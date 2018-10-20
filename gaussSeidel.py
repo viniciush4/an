@@ -1,4 +1,5 @@
 import numpy as np
+from math import fabs
 
 n=int(input("Dimensão do sistema (n): "))
 # Cria uma matriz zerada e um vetor b zerado
@@ -6,9 +7,13 @@ A = np.zeros((n,n), float)
 #b = np.zeros(n, float)
 b = [0.]*n
 X = [0.]*n
+xAnterior = [0.]*n
 matrizSeidel = []
 numeroOperacoesSeidel = 0
 tol = 0.0000000001
+difRel = 1
+difMax = 0
+xMax = 0
 
 def removerElementosNaoNulos(inicioVarI, fimVarI, inicioVarJ, fimVarJ, incrementaIniVarJ, incrementaFimVarJ):
     
@@ -32,6 +37,8 @@ def solucionarDuasPrimeirasLinhas(diagonalPrincipal):
     soma = 0
     posicao = 0
     global numeroOperacoesSeidel
+    global difMax
+    global xMax
 
     for linha in matrizSeidel[:2]:
         #Remove o elemento da diagonal
@@ -47,7 +54,15 @@ def solucionarDuasPrimeirasLinhas(diagonalPrincipal):
         X[limiteDiag] = (b[limiteDiag] - soma) / diagonalPrincipal
         numeroOperacoesSeidel = numeroOperacoesSeidel + 2
 
+        #Calcula a diferença relativa
+        if(fabs(X[limiteDiag] - xAnterior[limiteDiag]) > difMax):
+            difMax = fabs(X[limiteDiag] - xAnterior[limiteDiag])
+
+        if(fabs(X[limiteDiag]) > xMax):
+            xMax = fabs(X[limiteDiag])
+
         #Atualiza as variáveis
+        xAnterior[limiteDiag] = X[limiteDiag]
         limiteDiag += 1
         posicao = 0
         soma = 0
@@ -59,6 +74,8 @@ def solucionarCentro(diagonalPrincipal):
     soma = 0
     posicao = 0
     global numeroOperacoesSeidel
+    global difMax
+    global xMax
 
     for linha in matrizSeidel[2:n-2]:
         #Remove o elemento da diagonal
@@ -74,8 +91,16 @@ def solucionarCentro(diagonalPrincipal):
         #Armazena o resultado        
         X[xFim] = (b[xFim] - soma) / diagonalPrincipal
         numeroOperacoesSeidel = numeroOperacoesSeidel + 2
+        
+        #Calcula a diferença relativa
+        if(fabs(X[xFim] - xAnterior[xFim]) > difMax):
+            difMax = fabs(X[xFim] - xAnterior[xFim])
+
+        if(fabs(X[xFim]) > xMax):
+            xMax = fabs(X[xFim])
 
         #Atualiza as variáveis
+        xAnterior[xFim] = X[xFim]
         xFim += 1
         xIni += 1
         posicao = 0
@@ -88,6 +113,8 @@ def solucionarDuasUltimasLinhas(diagonalPrincipal):
     soma = 0
     posicao = 0
     global numeroOperacoesSeidel
+    global difMax
+    global xMax
 
     for linha in matrizSeidel[n-2:]:
         #Remove o elemento da diagonal
@@ -102,8 +129,16 @@ def solucionarDuasUltimasLinhas(diagonalPrincipal):
         #Armazena o resultado    
         X[xFim] = (b[xFim] - soma) / diagonalPrincipal
         numeroOperacoesSeidel = numeroOperacoesSeidel + 2
+        
+        #Calcula a diferença relativa
+        if(fabs(X[xFim] - xAnterior[xFim]) > difMax):
+            difMax = fabs(X[xFim] - xAnterior[xFim])
+
+        if(fabs(X[xFim]) > xMax):
+            xMax = fabs(X[xFim])
 
         #Atualiza as variáveis
+        xAnterior[xFim] = X[xFim]
         xFim += 1
         xIni += 1
         posicao = 0
@@ -112,6 +147,10 @@ def solucionarDuasUltimasLinhas(diagonalPrincipal):
 
 # Função principal
 def main():
+
+    global difRel
+    global difMax
+    global xMax
     numeroIteracoes = 0
 
     # Realiza as leituras
@@ -167,9 +206,13 @@ def main():
 
     #Falta calcular a tolerância
 
-    parada = 0
+    
 
-    while(parada <= 1):
+    while(difRel > tol and numeroIteracoes < 500):
+
+        difMax = 0
+        xMax = 0
+        numeroIteracoes += 1
 
         #Realiza o método de GaussSeidel
         solucionarDuasPrimeirasLinhas(dp)
@@ -184,8 +227,11 @@ def main():
         #Imprime o total de operações realizadas
         print('Total de operações realizadas = {} \n'.format(numeroOperacoesSeidel))
 
-        numeroIteracoes += 1
-        parada += 1
+        #Calcula a diferença relativa
+        difRel = difMax / xMax
+
+        print('\nDiferença Relativa = {}, DifMax = {}, xMax = {}\n'.format(difRel, difMax, xMax))
+
 
     print('Total de Iterações = {}\n'.format(numeroIteracoes))    
 
