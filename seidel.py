@@ -1,26 +1,10 @@
-import numpy as np
 from math import fabs
 
-def calcularErro(x):
-    e = np.zeros(len(x), float)
-    emax = 0
-    esoma = 0
-    for i, y in enumerate(x):
-        e[i] = y - 1
-        esoma += e[i]
-        if e[i] > emax:
-            emax = e[i]
-
-    print("Vetor erro: ", e)
-    print("Erro máximo: ", emax)
-    print("Erro soma:", esoma)
-    return emax, esoma
-
 #Armazena a dimensão da matriz
-n=int(input("Dimensão do sistema (n): "))
+n=0
 
 #Cria uma matriz zerada e vetores zerados
-A = np.zeros((n,n), float)
+A = []
 b = [0.]*n
 X = [0.]*n
 xAnterior = [0.]*n
@@ -182,7 +166,19 @@ def solucionarDuasUltimasLinhas(linhaInicial, linhaFinal, elementoInicial, eleme
 
 
 #Função principal
-def main():
+def resolver(A2, n2, b2, x2, dp):
+
+    global A
+    global n
+    global b
+    global X
+    global xAnterior
+
+    A = A2
+    n = n2
+    b = b2
+    X = x2
+    xAnterior = [0.]*n
 
     #Variáveis
     global difRel
@@ -190,47 +186,7 @@ def main():
     global xMax
     numeroIteracoesSeidel = 0
 
-    #Realiza as leituras   
-    da=float(input("Valor da diagonal a (da): "))
-    db=float(input("Valor da diagonal b (db): "))
-    dp=float(input("Valor da diagonal principal (dp): "))
-    dc=float(input("Valor da diagonal c (dc): "))
-    dd=float(input("Valor da diagonal d (dd): "))
-
-    #Preenche as cinco diagonais
-    for i in range(0,n):
-        for j in range(0,n):
-            d = i - j
-            if d == 2:
-                A[i][j] = da
-            elif d == 1:
-                A[i][j] = db
-            elif d == 0:
-                A[i][j] = dp
-            elif d == -1:
-                A[i][j] = dc
-            elif d == -2:
-                A[i][j] = dd
-
-    #Imprime a matriz
-    print('\nMatriz Gerada:\n\n',A)
-    
-    #Gera um vetor b tal que a solução seja x=[1.0, 1.0, ... 1.0]
-    for i in range(0,n):
-        for j in range(0,n):
-            b[i] = b[i]+A[i][j]
-    
-    #Imprime o vetor b
-    print('\nVetor b gerado:\n\n',b,'\n')
-
-    #Exemplo da especificação
-    #n = 8
-
-    #d A = 0.5, 
-    #d B = −2.0, 
-    #D P = 9.5, 
-    #d C = −2.4  
-    #d D = 0.8.
+    # print(A, n, b, X, difRel, difMax, xMax, numeroIteracoesSeidel)
     
     #Realiza o método de Gauss Seidel
     while(difRel > tol and numeroIteracoesSeidel < 700):
@@ -250,13 +206,9 @@ def main():
         difRel = difMax / xMax
 
     #Imprime o vetor X de soluções
-    print('O vetor X de soluções:\n\n',X)
+    # print('O vetor X de soluções:\n\n',X)
     #Imprime o total de iterações
-    print('\nTotal de iterações: {}\n'.format(numeroIteracoesSeidel))
+    print('Total de iterações: {}'.format(numeroIteracoesSeidel))
     #Imprime o total de operações realizadas
-    print('O número de operações total: {} \n'.format(numeroOperacoesSeidel))
+    print('Operações realizadas: {}'.format(numeroOperacoesSeidel))
 
-    print(calcularErro(X))
-
-# Chama a função principal
-main()
