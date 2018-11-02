@@ -178,7 +178,11 @@ def resolver(A2, n2, b2, x2, dp):
     n = n2
     b = b2
     X = x2
-    xAnterior = [0.]*n
+
+    # Preenche vetor inicial
+    xAnterior = [0.] * n
+    for i in range(0, n):
+        xAnterior[i] = b[i]/A[i][i]
 
     #Variáveis
     global difRel
