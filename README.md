@@ -28,4 +28,22 @@ for k in range(0, n):
    intervalo = range(k+1, n) if (k == n-1 or k == n-2) else range(k+1, k+3)
 ```
 
-## Comparação das soluções e do esforço computacional na resolução de um sistema de equações lineares para o caso de um problema pentadiagonal
+Exemplo: considerando um sistema com n=20, os elementos acessados abaixo de A[2][2] (k=2) serão A[2+1][2] e A[2+2][2], pois a função range(k+1, k+3) retorna os valores: k+1 e k+2. Considerando o mesmo sistema, o elemento percorrido abaixo de A[18][18] (k=18) é A[18+1][18], pois a função range(k+1, n) retorna o valor k+1. Isso acontece porque 18 == 20-2, uma das condições que define qual range será aplicado.
+
+Após a triangularização, a resolução do sistema é feita de forma retroativa. Enfatizando os intervalos percorridos, temos:
+
+```
+# Resolve as demais linhas do sistema
+for i in range(n-2, -1, -1):
+   
+  [...]
+
+   # Define o intervalo que será percorrido à direita da diagonal.
+   # Se for o penúltimo, antepenúltimo ou um antes deste, o
+   # intervalo será [i+1, n), caso contrário será [i+1, i+5)
+   intervalo2 = range(i+1, n) if (i == n-2 or i == n-3 or i == n-4) else range(i+1, i+5)
+```
+
+O intervalo percorrido à direita do elemento da diagonal foi definido como sendo de tamanho máximo igual a quatro elementos. Essa estratégia foi utilizada pois verificou-se que no pior caso, após o pivoteamento, a linha pivô irá abrigar 4 elementos após o elemento da diagonal, como exemplificado a seguir.
+
+
