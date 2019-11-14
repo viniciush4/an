@@ -1,3 +1,4 @@
+<div style="max-width: 600px;">
 # Método de eliminação de Gauss e Método iterativo de Gauss-Seidel
 
 Leonardo Nascimento dos Santos - [lleooNS](https://github.com/lleooNS "lleooNS")<br>
@@ -90,3 +91,4 @@ Comparação do esforço computacional dos métodos
 ### 4.4 Execução 4
 
 <img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-39-14.png?raw=true" />
+</div>
