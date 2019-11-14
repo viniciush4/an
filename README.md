@@ -1,7 +1,7 @@
 # Método de eliminação de Gauss e Método iterativo de Gauss-Seidel
 
-Leonardo Nascimento dos Santos
-Vinícius Berger
+ * Leonardo Nascimento dos Santos
+ * Vinícius Berger
 
 ## 1. Introdução
 Em Matemática, um sistema de equações lineares é um conjunto finito de equações de grau 1 aplicadas num mesmo conjunto, igualmente finito, de variáveis. Uma solução para um sistema linear é uma atribuição de valores às incógnitas que satisfazem simultaneamente todas as equações do sistema. 
@@ -24,25 +24,11 @@ Exemplo: considerando um sistema com n=20, os elementos acessados abaixo de A[2]
 
 Após a triangularização, a resolução do sistema é feita de forma retroativa. Enfatizando os intervalos percorridos, temos:
 
-```
-# Resolve as demais linhas do sistema
-for i in range(n-2, -1, -1):
-   
-  [...]
-
-   # Define o intervalo que será percorrido à direita da diagonal.
-   # Se for o penúltimo, antepenúltimo ou um antes deste, o
-   # intervalo será [i+1, n), caso contrário será [i+1, i+5)
-   intervalo2 = range(i+1, n) if (i == n-2 or i == n-3 or i == n-4) else range(i+1, i+5)
-```
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-37-00.png?raw=true" />
 
 O intervalo percorrido à direita do elemento da diagonal foi definido como sendo de tamanho máximo igual a quatro elementos. Essa estratégia foi utilizada pois verificou-se que no pior caso, após o pivoteamento, a linha pivô irá abrigar 4 elementos após o elemento da diagonal, como exemplificado a seguir.
 
-
-
-
-
-
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-37-18.png?raw=true" />
 
 As últimas linhas receberão tratamento especial: por não conter 4 posições a partir da diagonal, o limite superior do intervalo é definido como o fim da matriz, ou seja, o intervalo é dado por range(i+1, n). Isso evita o erro “List index out of range”. Para as demais linhas, o intervalo considera 4 elementos: range(i+1, i+5), que retornará os índices i+1, i+2, i+3 e i+4.
 
