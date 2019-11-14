@@ -1,1 +1,3 @@
-# Comparação das soluções e do esforço computacional na resolução de um sistema de equações lineares via método de eliminiação de Guass e via método iterativo de Gauss-Seidel para o caso de um problema pentadiagonal
+# Método de eliminação de Gauss e Método iterativo de Gauss-Seidel
+
+## Comparação das soluções e do esforço computacional na resolução de um sistema de equações lineares para o caso de um problema pentadiagonal
