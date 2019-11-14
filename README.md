@@ -15,7 +15,7 @@ A implementação deste método foi fortemente baseada na implementação fornec
 
 A parte de triangularização consiste em transformar o sistema fornecido em um sistema que possui uma matriz de coeficientes triangular superior. A maneira de se conseguir isso é percorrendo cada elemento da diagonal principal e zerando todos os elementos que estão abaixo deste na coluna via aplicação de operações matriciais elementares nas linhas correspondentes. Antes, porém, é definido o elemento pivô, ou seja, o elemento que permanecerá na diagonal principal. Este elemento deve ser o maior em valor absoluto dentre o que já está na diagonal mais os que serão zerados. Considerando o caso particular de um sistema pentadiagonal, os loops aninhados para acessar somente os elementos não nulos ficam assim:
 
-`
+```
 # Para cada elemento na diagonal principal
 for k in range(0, n):
    [...]
@@ -26,6 +26,6 @@ for k in range(0, n):
    # Se for qualquer outro elemento da diagonal principal o 
    # intervalo será [k+1, k+3) para não acessar elementos nulos
    intervalo = range(k+1, n) if (k == n-1 or k == n-2) else range(k+1, k+3)
-`
+```
 
 ## Comparação das soluções e do esforço computacional na resolução de um sistema de equações lineares para o caso de um problema pentadiagonal
