@@ -1,7 +1,7 @@
 # Método de eliminação de Gauss e Método iterativo de Gauss-Seidel
 
- * Leonardo Nascimento dos Santos
- * Vinícius Berger
+Leonardo Nascimento dos Santos <br>
+Vinícius Berger
 
 ## 1. Introdução
 Em Matemática, um sistema de equações lineares é um conjunto finito de equações de grau 1 aplicadas num mesmo conjunto, igualmente finito, de variáveis. Uma solução para um sistema linear é uma atribuição de valores às incógnitas que satisfazem simultaneamente todas as equações do sistema. 
