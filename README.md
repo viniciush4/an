@@ -18,18 +18,7 @@ A implementação deste método foi fortemente baseada na implementação fornec
 
 A parte de triangularização consiste em transformar o sistema fornecido em um sistema que possui uma matriz de coeficientes triangular superior. A maneira de se conseguir isso é percorrendo cada elemento da diagonal principal e zerando todos os elementos que estão abaixo deste na coluna via aplicação de operações matriciais elementares nas linhas correspondentes. Antes, porém, é definido o elemento pivô, ou seja, o elemento que permanecerá na diagonal principal. Este elemento deve ser o maior em valor absoluto dentre o que já está na diagonal mais os que serão zerados. Considerando o caso particular de um sistema pentadiagonal, os loops aninhados para acessar somente os elementos não nulos ficam assim:
 
-```
-# Para cada elemento na diagonal principal
-for k in range(0, n):
-   [...]
-
-   # Define o intervalo que será percorrido abaixo do elemento.
-   # Se for o último ou o penúltimo elemento, o intervalo será
-   # [k+1, n) para evitar "List index out of range". 
-   # Se for qualquer outro elemento da diagonal principal o 
-   # intervalo será [k+1, k+3) para não acessar elementos nulos
-   intervalo = range(k+1, n) if (k == n-1 or k == n-2) else range(k+1, k+3)
-```
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-30-19.png?raw=true" />
 
 Exemplo: considerando um sistema com n=20, os elementos acessados abaixo de A[2][2] (k=2) serão A[2+1][2] e A[2+2][2], pois a função range(k+1, k+3) retorna os valores: k+1 e k+2. Considerando o mesmo sistema, o elemento percorrido abaixo de A[18][18] (k=18) é A[18+1][18], pois a função range(k+1, n) retorna o valor k+1. Isso acontece porque 18 == 20-2, uma das condições que define qual range será aplicado.
 
