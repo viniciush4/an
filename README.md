@@ -4,7 +4,6 @@ Leonardo Nascimento dos Santos - [lleooNS](https://github.com/lleooNS "lleooNS")
 Vinícius Berger - [viniciush4](https://github.com/viniciush4 "viniciush4")
 
 ## 1. Introdução
-<div style="max-width: 600px;">
 Em Matemática, um sistema de equações lineares é um conjunto finito de equações de grau 1 aplicadas num mesmo conjunto, igualmente finito, de variáveis. Uma solução para um sistema linear é uma atribuição de valores às incógnitas que satisfazem simultaneamente todas as equações do sistema. 
 
 Existem inúmeros métodos para resolução de sistemas lineares. Dois deles serão tratados neste trabalho: o método de “Eliminação de Gauss” e o método iterativo de “Gauss-Seidel”. O objetivo principal é comparar as soluções e o esforço computacional de cada método.
@@ -12,7 +11,7 @@ Existem inúmeros métodos para resolução de sistemas lineares. Dois deles ser
 Um tipo particular de sistema linear será usado: sistemas cuja matriz de coeficientes é pentadiagonal. Matrizes pentadiagonais são aquelas cujos elementos se concentram em uma faixa central da matriz, tendo elementos não nulos nas cinco diagonais centrais e todo o restante nulo.
 
 Levando em consideração essa particularidade, serão apresentadas as implementações dos dois métodos já mencionados, usando a linguagem python. O programa está dividido em três partes: o módulo principal (main.py), responsável por realizar a leitura dos dados do problema, invocar os métodos de resolução e calcular os erros; o módulo referente ao método “Eliminação de Gauss” (gauss.py), responsável pela resolução do sistema por meio do método de mesmo nome; e o módulo referente ao método iterativo de “Gauss-Seidel” (seidel.py), responsável pela resolução do sistema via método de Gauss-Seidel.
-</div>
+
 ## 2. Método numérico 1: Eliminação de Gauss
 
 A implementação deste método foi fortemente baseada na implementação fornecida nas aulas de laboratório (elimGauss_Com_pivot.c) e está dividida basicamente em duas partes: a triangularização e a resolução.
