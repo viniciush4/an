@@ -1,5 +1,8 @@
 # Método de eliminação de Gauss e Método iterativo de Gauss-Seidel
 
+Leonardo Nascimento dos Santos
+Vinícius Berger
+
 ## 1. Introdução
 Em Matemática, um sistema de equações lineares é um conjunto finito de equações de grau 1 aplicadas num mesmo conjunto, igualmente finito, de variáveis. Uma solução para um sistema linear é uma atribuição de valores às incógnitas que satisfazem simultaneamente todas as equações do sistema. 
 
@@ -47,3 +50,58 @@ for i in range(n-2, -1, -1):
 O intervalo percorrido à direita do elemento da diagonal foi definido como sendo de tamanho máximo igual a quatro elementos. Essa estratégia foi utilizada pois verificou-se que no pior caso, após o pivoteamento, a linha pivô irá abrigar 4 elementos após o elemento da diagonal, como exemplificado a seguir.
 
 
+
+
+
+
+
+As últimas linhas receberão tratamento especial: por não conter 4 posições a partir da diagonal, o limite superior do intervalo é definido como o fim da matriz, ou seja, o intervalo é dado por range(i+1, n). Isso evita o erro “List index out of range”. Para as demais linhas, o intervalo considera 4 elementos: range(i+1, i+5), que retornará os índices i+1, i+2, i+3 e i+4.
+
+## 3. Método numérico 2: Gauss-Seidel
+
+Para realizar a implementação do método de Gauss-Seidel foi necessário analisar a matriz pentadiagonal. A estratégia adotada foi realizar a solução do sistema em três partes. Analisando a matriz, foi observado que existe um padrão nas duas primeiras linhas, nas linhas do "meio" e nas duas últimas linhas.
+
+Na implementação desse método numérico, três funções foram criadas:
+
+  * solucionarDuasPrimeirasLinhas
+  * solucionarCentro
+  * solucionarDuasUltimasLinhas
+
+As três funções realizam um comportamento semelhante, sofrendo diferenças apenas nos parâmetros que foram fornecidos e na manipulação de listas internas. Basicamente, a matriz é percorrida armazenando os elementos não nulos em uma lista auxiliar sem o elemento da diagonal.
+
+A lista auxiliar é percorrida realizando as operações necessárias e logo após o vetor X é atualizado com a solução encontrada.
+
+Para obter o número de iterações necessárias para encontrar a solução, foi utilizado uma estrutura de repetição que foi executada até a diferença relativa ser menor do que a tolerância fornecida. 
+
+## 4. Resultados
+
+### 4.1 Execução 1
+
+
+
+
+Vale ressaltar que o método de Gauss-Seidel precisou de 21 iterações para ser concluído.
+
+Matriz A original:
+
+
+Vetor b original: 
+
+
+Matriz A após a aplicação do método 1 (Eliminação de Gauss): 
+
+
+Vetor b após a aplicação do método 1 (Eliminação de Gauss):
+
+
+Os elementos pintados na cor cinza são aqueles cujo valor garantidamente é nulo e portanto não são acessados durante a execução do algoritmo do método de “Eliminação de Gauss”.
+
+
+### 4.2 Execução 2
+
+Comparação do esforço computacional dos métodos
+
+### 4.3 Execução 3
+
+
+### 4.4 Execução 4
