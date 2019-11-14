@@ -52,31 +52,41 @@ Para obter o número de iterações necessárias para encontrar a solução, foi
 
 ### 4.1 Execução 1
 
-
-
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-37-39.png?raw=true" />
 
 Vale ressaltar que o método de Gauss-Seidel precisou de 21 iterações para ser concluído.
 
 Matriz A original:
 
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-37-54.png?raw=true" />
 
 Vetor b original: 
 
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-38-07.png?raw=true" />
 
 Matriz A após a aplicação do método 1 (Eliminação de Gauss): 
 
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-38-17.png?raw=true" />
 
 Vetor b após a aplicação do método 1 (Eliminação de Gauss):
 
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-38-27.png?raw=true" />
 
 Os elementos pintados na cor cinza são aqueles cujo valor garantidamente é nulo e portanto não são acessados durante a execução do algoritmo do método de “Eliminação de Gauss”.
 
 
 ### 4.2 Execução 2
 
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-38-40.png?raw=true" />
+
 Comparação do esforço computacional dos métodos
+
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-38-51.png?raw=true" />
 
 ### 4.3 Execução 3
 
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-39-02.png?raw=true" />
 
 ### 4.4 Execução 4
+
+<img src="https://github.com/viniciush4/an/blob/master/imagens/Captura%20de%20tela%20de%202019-11-14%2010-39-14.png?raw=true" />
